@@ -1,0 +1,42 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<div class="container">
+    <h1>LISTA DE ALUNOS</h1>
+    <table>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Cursando</th>
+        <th>Editar</th>
+    </tr>
+    
+    <tr *ngFor="let aluno of alunos">
+        <td>{{aluno.id}}</td>
+        <td>{{aluno.nome}}</td>
+        <td>{{aluno.idade}}</td>
+        <td>{{aluno.cursando}}</td>
+        <td><button class="btn-aluno" [class.selected]="aluno === selectedAluno" type="button" (click)="onSelect(aluno)"><mat-icon>edit</mat-icon></button></td>
+    </tr>
+    </table>
+
+    <div *ngIf="selectedAluno" style="margin-top: 30px;">
+        <h2>{{selectedAluno.nome | uppercase}} - Detalhes</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Cursando</th>
+            </tr>
+
+            <tr>
+                <td>ID: {{selectedAluno.id}}</td>
+                <td><input id="nome" [(ngModel)]="selectedAluno.nome" placeholder="Nome"></td>
+                <td><input id="idade" [(ngModel)]="selectedAluno.idade" placeholder="Idade"></td>
+                <td><input id="cursando" [(ngModel)]="selectedAluno.cursando" placeholder="Cursando"></td>
+            </tr> 
+        </table>
+    </div>
+    <br>
+    <br>
+</div>
